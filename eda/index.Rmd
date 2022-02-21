@@ -1,0 +1,27 @@
+---
+title: "Suicide Rates"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Set up
+library(lintr)
+library(knitr)
+library(plotly)
+source("analysis.R")
+```
+
+
+
+```{r cars}
+summary(cars)
+```
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
