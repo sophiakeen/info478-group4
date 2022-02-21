@@ -14,14 +14,17 @@ source("analysis.R")
 ```
 
 
+### Distribution of Variables
 
-```{r cars}
-summary(cars)
+```{r distr, warning=FALSE, echo=FALSE, message=FALSE}
+kable()
 ```
 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### Relationships Between Variables
+
+```{r rela, warning=FALSE, echo=FALSE, message=FALSE}
+kable()
 ```
 
 

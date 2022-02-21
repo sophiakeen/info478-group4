@@ -10,3 +10,40 @@ crude_rates <- read.csv('data/archive/Crude suicide rates.csv')
 facilities <- read.csv('data/archive/Facilities.csv')
 human_resources <- read.csv('data/archive/Human Resources.csv')
 
+
+#cleaning up some of the data 
+
+#took all years out of age standardized except 2016 bc all the other datasets
+#from kaggle only have data from 2016
+age_standardized_2016 <- age_standardized_rates %>%
+  select(Country:X2016)
+
+#merged the age standardized rates for 2016 with the data about the facilities 
+#so it is easier for us to look at the numbers for each country
+age_standardized_facilities <- merge(age_standardized_2016,
+                                          facilities, by = "Country")
+
+#essentially the same as above but with the human resources
+age_standardized_hr <- merge(age_standardized_2016,
+                                     human_resources, by = "Country")
+
+#Distribution of Variables
+
+#Relationships Between Variables
+
+#How does mental healthcare affect suicide rates?
+
+#This section needs to be refined. I just did what I could in the time I had. 
+#Sorry. Essentially, I selected mental hospitals specifically to show how the 
+#number of mental hospitals affects suicides rates. I wanted to filter so we 
+#only got both sexes but I couldn't get it to work. 
+
+mental_hospital_rates <- age_standardized_facilities %>%
+  select('Country', 'Sex', 'X2016', 'Mental._hospitals') %>%
+  arrange(desc(Mental._hospitals)) %>%
+  rename('suicide_rates' = X2016, 'mental_hospitals' = Mental._hospitals)
+
+ggplot(data = mental_hospital_rates, aes(x = suicide_rates, 
+                                                     y = mental_hospitals)) + geom_point(shape = 1) +
+  labs(x = "Suicide Rates", y = "Mental Hospitals",
+       title = "Number of Mental Hospitals vs Suicide Rates")
