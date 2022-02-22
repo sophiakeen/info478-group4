@@ -30,6 +30,21 @@ age_standardized_hr <- merge(age_standardized_2016,
 
 #Distribution of Variables
 
+#suicide rates
+
+suicide_mean_by_sex <- age_standardized_facilities %>%
+  select('Country', 'Sex', 'X2016') %>%
+  rename('suicide_rates' = X2016) %>%
+  group_by(Sex) %>%
+  summarize(mean(suicide_rates))
+
+suicide_mean_by_country <- age_standardized_facilities %>%
+  select('Country', 'Sex', 'X2016') %>%
+  rename('suicide_rates' = X2016) %>%
+  group_by(Country) %>%
+  summarize(mean(suicide_rates))
+
+
 #Relationships Between Variables
 
 #How does mental healthcare affect suicide rates?

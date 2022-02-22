@@ -16,7 +16,11 @@ source("analysis.R")
 
 ### Distribution of Variables
 
+#### Suicide Rates
+One of the mental health variables we want to focus on for this project is suicide rates. 
+
 ```{r distr, warning=FALSE, echo=FALSE, message=FALSE}
+kable(suicide_mean_by_sex)
 
 ```
 
