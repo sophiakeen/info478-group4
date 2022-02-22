@@ -18,12 +18,14 @@ source("analysis.R")
 
 #### Suicide Rates
 One of the mental health variables we want to focus on for this project is suicide rates. 
+With this measure of mental health we can then analyze how it compares to the access to health care such as the number of mental hospitals the area or region has. This data comes from a [Mental Health and Suicide Rates Kaggle Data Set](https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Age-standardized+suicide+rates.csv) where the age standardized suicide rates have been calculated for the year 2016 noting sex and country.
+
 
 ```{r distr, warning=FALSE, echo=FALSE, message=FALSE}
-kable(suicide_mean_by_sex)
+kable(suicide_mean_by_sex, col.names = c("Sex", "Max Rate", "Min Rate", "Mean Rate"))
 
 ```
-
+This table indicates the means of age standardized suicide rates in 2016 for females, males, and the combination of the two. We can note that the male rates are significantly higher than the females. It also describes the ranges of values that females, males, and both sexes of the age standardized suicide rates. Males have both one of the highest rates and lowest rates.
 
 ### Relationships Between Variables
 

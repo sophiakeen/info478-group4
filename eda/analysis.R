@@ -36,14 +36,13 @@ suicide_mean_by_sex <- age_standardized_facilities %>%
   select('Country', 'Sex', 'X2016') %>%
   rename('suicide_rates' = X2016) %>%
   group_by(Sex) %>%
-  summarize(mean(suicide_rates))
+  summarize(max(suicide_rates), min(suicide_rates), mean(suicide_rates))
 
 suicide_mean_by_country <- age_standardized_facilities %>%
   select('Country', 'Sex', 'X2016') %>%
   rename('suicide_rates' = X2016) %>%
   group_by(Country) %>%
   summarize(mean(suicide_rates))
-
 
 #Relationships Between Variables
 
