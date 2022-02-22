@@ -17,14 +17,17 @@ source("analysis.R")
 ### Distribution of Variables
 
 ```{r distr, warning=FALSE, echo=FALSE, message=FALSE}
-kable()
+
 ```
 
 
 ### Relationships Between Variables
 
+#### How does socioeconomic status level impact prevalence of depression? 
+One of our objectives for this project is to better understand the correlation between mental health and socioeconomic status. This bar chart is a example of what we can analyze and examine from the [Adult Depression (LGHC Indicator) dataset](https://healthdata.gov/State/Adult-Depression-LGHC-Indicator-/73c2-5f46). In this dataset, the California Behavioral Risk Factor Surveillance Survey (BRFSS) asked California residents the question: “Has a doctor, nurse or other health professional EVER told you that you have a depressive disorder (including depression, major depression, dysthymia, or minor depression)?” This plot compares 2018 resident income and the Weighted Frequency, which refers to Frequency with the weight applied (the estimated count in the population with the combination of values).
+
+
 ```{r rela, warning=FALSE, echo=FALSE, message=FALSE}
-kable()
+ad_2018_income_plotly
 ```
-
-
+In 2018. California residents in the lower socioeconomic class with less than a $20,000 salary have the highest weighted frequency of adult depression with 1,040,602. In contrast, California residents in the higher socioeconomic class with more than a $100,000 salary have the lowest weighted frequency of adult depression with 556,246. 
