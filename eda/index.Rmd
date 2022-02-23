@@ -27,6 +27,19 @@ kable(suicide_mean_by_sex, col.names = c("Sex", "Max Rate", "Min Rate", "Mean Ra
 ```
 This table indicates the means of age standardized suicide rates in 2016 for females, males, and the combination of the two. We can note that the male rates are significantly higher than the females. It also describes the ranges of values that females, males, and both sexes of the age standardized suicide rates. Males have both one of the highest rates and lowest rates.
 
+```{r rates, warning=FALSE, echo=FALSE, message=FALSE}
+boxplot(suicide_mean_by_country$`mean(suicide_rates)`,
+                                main="Average Suicide Rates by Country",
+                                xlab="Countries",
+                                ylab="Suicide Rates",
+                                col = "blue",
+                                border = "black",
+                                notch = TRUE)
+
+```
+
+The data that is shown in this boxplot is the average suicide rate of each contry. This boxplot shows the lowest suicide rate (Antigua and Barbuda) of 0.4666667 and the highest rate (Guyana) of 30.3333333. However, to note, the highest suicide rate is actually considered an outlier on the boxplot. The actual maximum represented here is Côte d'Ivoire with a the average suicide rate of 22.6666667. 
+
 ### Relationships Between Variables
 
 #### How does socioeconomic status level impact prevalence of depression? 

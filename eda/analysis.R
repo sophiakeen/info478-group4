@@ -43,6 +43,9 @@ suicide_mean_by_country <- age_standardized_facilities %>%
   rename('suicide_rates' = X2016) %>%
   group_by(Country) %>%
   summarize(mean(suicide_rates))
+  
+min_suicide_rate <- min(suicide_mean_by_country$`mean(suicide_rates)`)
+max_suicide_rate <- max(suicide_mean_by_country$`mean(suicide_rates)`)
 
 #Relationships Between Variables
 
