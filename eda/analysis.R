@@ -89,4 +89,23 @@ ad_2018_income_plotly <- ggplotly(ad_2018_income_plot)
 
 options(scipen=5) #force no E (scientific notation) in values
 
+# The relationship between the suicidal rates and mental hospital rates by Country in 2016
+country_mental_hospital <- age_standardized_facilities %>% 
+  group_by(Country) %>% 
+  summarise(X2016 = mean(X2016), mental_hospitals = mean(Mental._hospitals)) %>% 
+#  filter(Country != "Japan") %>% 
+  filter(!is.na(mental_hospitals))
 
+country_mental_hospital_plotly <- plot_ly(
+  data = country_mental_hospital,
+  x = ~mental_hospitals,
+  y = ~X2016,
+  color = ~Country,
+  Type = "scatter",
+  Mode = "markers"
+) %>% 
+  layout(
+    title = "Suicidal rates vs. Mental hospital rates by Country in 2016",
+    yaxis = list(title = "Suicidal Rates"),
+    xaxis = list(title = "Mental Hospital Rates")
+  )
