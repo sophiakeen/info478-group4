@@ -29,7 +29,7 @@ This table indicates the means of age standardized suicide rates in 2016 for fem
 
 ```{r rates, warning=FALSE, echo=FALSE, message=FALSE}
 boxplot(suicide_mean_by_country$`mean(suicide_rates)`,
-                                main="Average Suicide Rates by Country",
+                                main="Suicide Rates by Country",
                                 xlab="Countries",
                                 ylab="Suicide Rates",
                                 col = "blue",

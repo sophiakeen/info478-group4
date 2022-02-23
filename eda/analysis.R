@@ -43,29 +43,8 @@ suicide_mean_by_country <- age_standardized_facilities %>%
   rename('suicide_rates' = X2016) %>%
   group_by(Country) %>%
   summarize(mean(suicide_rates))
-  
-min_suicide_rate <- min(suicide_mean_by_country$`mean(suicide_rates)`)
-max_suicide_rate <- max(suicide_mean_by_country$`mean(suicide_rates)`)
 
 #Relationships Between Variables
-
-#How does mental healthcare affect suicide rates?
-
-#This section needs to be refined. I just did what I could in the time I had. 
-#Sorry. Essentially, I selected mental hospitals specifically to show how the 
-#number of mental hospitals affects suicides rates. I wanted to filter so we 
-#only got both sexes but I couldn't get it to work. 
-
-mental_hospital_rates <- age_standardized_facilities %>%
-  select('Country', 'Sex', 'X2016', 'Mental._hospitals') %>%
-  arrange(desc(Mental._hospitals)) %>%
-  rename('suicide_rates' = X2016, 'mental_hospitals' = Mental._hospitals)
-
-ggplot(data = mental_hospital_rates, aes(x = suicide_rates, 
-                                                     y = mental_hospitals)) + geom_point(shape = 1) +
-  labs(x = "Suicide Rates", y = "Mental Hospitals",
-       title = "Number of Mental Hospitals vs Suicide Rates")
-
 
 #How does socioeconomic status level impact prevalence of depression? 
 
