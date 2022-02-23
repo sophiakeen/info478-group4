@@ -37,3 +37,12 @@ One of our objectives for this project is to better understand the correlation b
 ad_2018_income_plotly
 ```
 In 2018. California residents in the lower socioeconomic class with less than a $20,000 salary have the highest weighted frequency of adult depression with 1,040,602. In contrast, California residents in the higher socioeconomic class with more than a $100,000 salary have the lowest weighted frequency of adult depression with 556,246. 
+
+#### How does the rate of a mental hospital affect suicidal rates?
+To see if there is a correlation between suicide rates and the number of health facilities in countries, we merged the age-standardized suicide rates in 2016 with the health facilities in each country. Since GDP is an indicator of a nation’s standard of living, we were able to understand how a country’s economy reflects suicide rates and mental health facilities in countries. 
+
+```{r relb, warning=FALSE, echo=FALSE, message=FALSE}
+country_mental_hospital_plotly
+```
+
+Based on the visualization, most countries are heavily populated on the lower left side, indicating that most countries have low suicidal rates with low mental hospital facilities rates. However, few countries like Guyana and Lithuania have very few mental hospitals with high suicidal rates. According to the [International Monetary Fund](https://www.imf.org/en/home), some of the countries that have led to economic growth in 2022 are the United States, Japan, and India. The United States and India seem to have higher suicide rates with low mental health facilities. On the other hand, Japan has the highest mental hospital rate of all nations, with relatively high suicidal rates.
