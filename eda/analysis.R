@@ -103,3 +103,4 @@ country_mental_hospital_plotly <- plot_ly(
     yaxis = list(title = "Suicidal Rates"),
     xaxis = list(title = "Mental Hospital Rates")
   )
+

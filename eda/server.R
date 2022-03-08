@@ -7,7 +7,7 @@ library(plotly)
 library(shiny)
 library(rsconnect)
 
-source("app_ui.R")
+source("app.R")
 
 #Define server logic
 server <- function(input, output) {
