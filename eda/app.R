@@ -2,6 +2,10 @@
 
 library(shiny)
 library(plotly)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+
 
 source("ui.R")
 source("server.R")

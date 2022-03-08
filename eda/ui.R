@@ -5,13 +5,14 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 library(shiny)
-library(rsconnect)
+#library(rsconnect)
+
 
 # Define UI
 
 introduction_view <- tabPanel("Home",
                               titlePanel("Introduction"),
-                              h3("Purpose"), 
+                              mainPanel(h3("Purpose")), 
 )
 
 
@@ -28,31 +29,38 @@ facilities_view <- tabPanel("Mental Facilities",
 
 
 income_view <- tabPanel("Income",
-                                 titlePanel(""),
+                                 titlePanel("How does socioeconomic status level impact prevalence of depression? "),
+                        tags$body(mainPanel(
+                          plotlyOutput("incomechart"),
+                          p("text")
+                          ))
+                        
 )
 
 summary_view <- tabPanel("Overview",
                               titlePanel("Introduction"),
-                              h3("Overview of Assignment"), 
+                              mainPanel( 
+                                h3("Overview of Assignment")), 
 )
 
 # user interface variable that holds all of the pages presented in shiny
 ui <- fluidPage(
-  includeCSS("finalprojectstyle.css"),
+  #includeCSS("finalprojectstyle.css"),
   navbarPage(
-    inverse = TRUE,
-    tags$div(
-      img(
-        src = "https://media.giphy.com/media/5BUR9eNQdG5egwA0pO/giphy.gif",
-        width = "216px", height = "48px"
-      ),
+    #inverse = TRUE,
+  #tags$div(
+      #img(
+       # src = "https://media.giphy.com/media/5BUR9eNQdG5egwA0pO/giphy.gif",
+       # width = "216px", height = "48px"
+      #),
       "Exploring Suicide Rates"
-    ),
+    #)
+  ,
     introduction_view,
     facilities_view,
     income_view,
 #    decades_page,
     summary_view,
-    setBackgroundColor("#212121")
+    #setBackgroundColor("#212121") error says can't find setBackgroundColor
   )
 )
