@@ -10,23 +10,35 @@ age_standardized_rates <- read.csv('data/archive/Age-standardized suicide rates.
 crude_rates <- read.csv('data/archive/Crude suicide rates.csv')
 facilities <- read.csv('data/archive/Facilities.csv')
 human_resources <- read.csv('data/archive/Human Resources.csv')
+country_continents <- read.csv('data/countryContinent.csv')
 
 
 #cleaning up some of the data 
+
+country_continents <- country_continents %>%
+  rename('Country' = country)
 
 #took all years out of age standardized except 2016 bc all the other datasets
 #from kaggle only have data from 2016
 age_standardized_2016 <- age_standardized_rates %>%
   select(Country:X2016)
 
+#adding continents onto our data
+continents_age_standardized <- merge(age_standardized_2016, country_continents,
+                                     by = "Country")
+continents_age_standardized <- continents_age_standardized %>%
+  select(-code_2, -code_3, -country_code, -iso_3166_2, -sub_region,
+         -sub_region_code, -region_code)
+
 #merged the age standardized rates for 2016 with the data about the facilities 
 #so it is easier for us to look at the numbers for each country
-age_standardized_facilities <- merge(age_standardized_2016,
+age_standardized_facilities <- merge(continents_age_standardized,
                                           facilities, by = "Country")
 
 #essentially the same as above but with the human resources
-age_standardized_hr <- merge(age_standardized_2016,
+age_standardized_hr <- merge(continents_age_standardized,
                                      human_resources, by = "Country")
+
 
 #Distribution of Variables
 
