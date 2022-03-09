@@ -59,8 +59,19 @@ suicide_mean_by_country <- age_standardized_facilities %>%
 #Relationships Between Variables
 
 #How does socioeconomic status level impact prevalence of depression? 
+ad_wider <- adult_depression %>% pivot_wider(names_from = Strata,
+                                              values_from = c(Strata.Name, Frequency, Weighted.Frequency,
+                                                              Lower.95..CL, Upper.95..CL))
+  
+ad_income <- ad_wider %>% select('Year', 'Strata.Name_Income', 'Frequency_Income',
+                                       'Weighted.Frequency_Income', 'Lower.95..CL_Income',
+                                       'Upper.95..CL_Income')
+ad_income <- na.omit(ad_income)
 
-ad_2018 <- adult_depression %>% 
+
+
+  
+#2018 data 
   filter(Year == 2018)
 ad_2018_wider <- ad_2018 %>% pivot_wider(names_from = Strata,
                                           values_from = c(Strata.Name, Frequency, Weighted.Frequency,
