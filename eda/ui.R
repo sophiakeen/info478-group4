@@ -6,7 +6,15 @@ library(ggplot2)
 library(plotly)
 library(shiny)
 #library(rsconnect)
+adult_depression <- read.csv('data/adult-depression-lghc-indicator-24.csv')
+ad_wider <- adult_depression %>% pivot_wider(names_from = Strata,
+                                             values_from = c(Strata.Name, Frequency, Weighted.Frequency,
+                                                             Lower.95..CL, Upper.95..CL))
 
+ad_income <- ad_wider %>% select('Year', 'Strata.Name_Income', 'Frequency_Income',
+                                 'Weighted.Frequency_Income', 'Lower.95..CL_Income',
+                                 'Upper.95..CL_Income')
+ad_income <- na.omit(ad_income)
 
 # Define UI
 
