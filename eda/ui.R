@@ -72,7 +72,36 @@ summary_view <- tabPanel("Conclusion",
                                 plotlyOutput("income2012chart"),
                                 h4("2018"),
                                 plotlyOutput("income2018chart"),
-                                p("")
+                                p("
+                                  The 2018 chart overall has greater numbers in weighted frequency than the 2012 chart
+                                  for all income categories most likely because of the increase of population in the span of 
+                                  five years. 
+                                  
+                                  We found it interesting that the $100,000+ income group, $50,000-$74,999 income group and the $20,000-$34,999 income have 
+                                  very similar frequencies in depression. However, there is still a trend of lower income groups having greater frequencies of
+                                  depression than higher income groups.
+                                  
+                                  
+                                  In general for most years, the $75,000-$99,999 income group and the 
+                                  $35,000-$49,999 income group have similar weighted frequencies to each other. However, 
+                                  in 2018, the weighted frequency of the $75,000-$99,999 income group 
+                                  greatly increased and had the second most highest frequency in depression compared to other income groups.
+                                  
+                                  
+                                
+                                  One important similarity of both the 2012 and 2018 charts is that
+                                  the group making the lowest income of less than $20,000 has the highest
+                                  weighted frequency of adult depression. 
+                                  Based on these charts, The lowest income group suffers about 2 to 2.46 times more frequently from
+                                  adult depression than the highest income group ($100,000+). Living with a low-income salary
+                                  is known the be very stressful emotionally and physically. Working long and tiring hours, trying to keep
+                                  food on the plate, paying expensive bills for rent, medicine, education, internet, and more are all extremely
+                                  stressful factors that contribute to worsening depression for low-income individuals and families. For those making
+                                  less than $20,000 annually, this may mean an individual is unemployed, homeless, doesn't have access to healthcare or an education,
+                                  which not only endangers a person's mental health, but also physical health. 
+                                  Living in the low-income class negatively impacts an individual's mental health so greatly
+                                  because of the lack of resources and basic human rights every person should have. 
+                                  ")
                                 
                                 
                                 ), 
