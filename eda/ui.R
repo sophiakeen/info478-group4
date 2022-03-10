@@ -23,7 +23,10 @@ introduction_view <- tabPanel("Home",
                               mainPanel(h3("Purpose"),
                               p(" Mental health is a large global issue that impacts people of all demographics.
                                 With this research project, we're aiming to better understand the correlation between mental health, healthcare, and socioeconomic status.")
-                              ) 
+                              ),
+                              h3("Research Questions"),
+                              h3("Data Sets"),
+                              
 )
 
 
@@ -31,10 +34,14 @@ facilities_view <- tabPanel("Mental Facilities",
                                titlePanel(""),
                                h1("Pick the types of facilities"),
                             sidebarPanel(
-                              checkboxGroupInput(inputId = "checkGroup", 
+                              radioButtons(inputId = "radio", 
                                                  label = h3("Pick Type of Facilities"), 
-                                                 choices = list("Mental Hospitals" = 1, "Health Units" = 2, "Outpatient Facilities" = 3, "Day Treatment" = 4, "Residential Facilities" = 5),
-                                                 selected = 1)
+                                                 choices = list("Mental Hospitals" = "mental_hospitals", "Health Units" = "health_units",
+                                                                "Outpatient Facilities" = "outpatient_facilities"),
+                                                 selected = "mental_hospitals")
+                            ), 
+                            mainPanel(
+                              plotlyOutput("country_facilities_plotly")
                             )
 )
 
@@ -72,6 +79,8 @@ income_view <- tabPanel("Income",
 summary_view <- tabPanel("Conclusion",
                               titlePanel("Conclusion"),
                               mainPanel( 
+                                h3("Facilities vs. Suicide Rates"),
+                                p(""),
                                 h3("Income vs. Depression Analysis"),
                                 p("Below are two Income vs. Weighted Depression Frequency bar charts.
                                   The first one is 2012 data and the second one is 2018 data."),

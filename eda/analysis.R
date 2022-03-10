@@ -72,7 +72,7 @@ ad_income <- na.omit(ad_income)
 
   
 #2018 data 
-  filter(Year == 2018)
+  # filter(Year == 2018)
 ad_2018_wider <- ad_2018 %>% pivot_wider(names_from = Strata,
                                           values_from = c(Strata.Name, Frequency, Weighted.Frequency,
                                                           Lower.95..CL, Upper.95..CL))
@@ -97,9 +97,10 @@ options(scipen=5) #force no E (scientific notation) in values
 # The relationship between the suicidal rates and mental hospital rates by Country in 2016
 country_mental_hospital <- age_standardized_facilities %>% 
   group_by(Country) %>% 
-  summarise(X2016 = mean(X2016), mental_hospitals = mean(Mental._hospitals)) %>% 
+  summarise(X2016 = mean(X2016), mental_hospitals = mean(Mental._hospitals), 
+            health_units = mean(health_units), outpatient_facilites = mean(outpatient._facilities)) 
 #  filter(Country != "Japan") %>% 
-  filter(!is.na(mental_hospitals))
+  # filter(!is.na(mental_hospitals))
 
 country_mental_hospital_plotly <- plot_ly(
   data = country_mental_hospital,

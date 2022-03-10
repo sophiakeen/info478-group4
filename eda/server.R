@@ -8,8 +8,6 @@ library(shiny)
 #library(rsconnect)
 
 
-
-
 #income data 
 adult_depression <- read.csv('data/adult-depression-lghc-indicator-24.csv')
 #How does socioeconomic status level impact prevalence of depression? 
@@ -35,10 +33,51 @@ ad_income <- ad_wider %>% select('Year', 'Strata.Name_Income', 'Frequency_Income
                                  'Upper.95..CL_Income')
 ad_income <- na.omit(ad_income)
 
+#Load Data
+age_standardized_rates <- read.csv('data/archive/Age-standardized suicide rates.csv')
+crude_rates <- read.csv('data/archive/Crude suicide rates.csv')
+facilities <- read.csv('data/archive/Facilities.csv')
+human_resources <- read.csv('data/archive/Human Resources.csv')
+country_continents <- read.csv('data/countryContinent.csv')
+
+# The relationship between the suicidal rates and mental hospital rates by Country in 2016
+country_mental_hospital <- age_standardized_facilities %>% 
+  group_by(Country) %>%
+  # rename('suicide_rates' = 'X2016') %>%
+  summarise(X2016 = mean(X2016), mental_hospitals = mean(Mental._hospitals), 
+            health_units = mean(health_units), outpatient_facilities = mean(outpatient._facilities))
 
 
 #Define server logic
 server <- function(input, output) {
+  
+  #Mental Hospitals Page
+  output$country_facilities_plotly <- renderPlotly({
+    # country_mental_hospital_plotly <- plot_ly(
+    #   data = country_mental_hospital,
+    #   x = input$radio,
+    #   y = ~X2016,
+    #   color = ~Country,
+    #   Type = "scatter",
+    #   Mode = "markers"
+    # ) %>% 
+    #   layout(
+    #     title = "Suicidal rates vs. Facilities rates by Country in 2016",
+    #     yaxis = list(title = "Suicidal Rates"),
+    #     xaxis = list(title = "Facilities Rates")
+    #   )
+    # 
+    # ggplotly(country_mental_hospital_plotly)
+    
+    country_facilities_plotly <- ggplot(data = country_mental_hospital, aes_(x = as.name(input$radio), y = as.name("X2016"))) +
+      geom_point(size = 1) +
+      labs(y = "Suicidal Rates", x = paste(input$radio), title = "Suicidal rates vs. Facilities rates by Country in 2016") +
+      scale_color_gradient(low="blue", high="red")
+    
+    ggplotly(country_facilities_plotly)
+    
+  })
+
   
   #Income Page
   #output$incomeheading <- renderText({input$year_input})
