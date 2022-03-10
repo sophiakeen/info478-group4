@@ -23,7 +23,7 @@ introduction_view <- tabPanel("Home",
                               mainPanel(h3("Purpose"),
                               p(" Mental health is a large global issue that impacts people of all demographics.
                                 With this research project, we're aiming to better understand the correlation between mental health, healthcare, and socioeconomic status.")
-                              ), 
+                              ) 
 )
 
 
@@ -34,8 +34,8 @@ facilities_view <- tabPanel("Mental Facilities",
                               checkboxGroupInput(inputId = "checkGroup", 
                                                  label = h3("Pick Type of Facilities"), 
                                                  choices = list("Mental Hospitals" = 1, "Health Units" = 2, "Outpatient Facilities" = 3, "Day Treatment" = 4, "Residential Facilities" = 5),
-                                                 selected = 1),
-                            ),
+                                                 selected = 1)
+                            )
 )
 
 #INCOME PAGE
@@ -62,7 +62,7 @@ income_view <- tabPanel("Income",
                             This plot compares resident income and the Weighted Frequency, which refers to Frequency with a population weight applied (the estimated count in the population with the combination of values).
                             This plot shows each year from 2012 to 2018."),
                          
-                          plotlyOutput("incomechart"),
+                          plotlyOutput("incomechart")
                           
                           
                           )
@@ -112,7 +112,7 @@ summary_view <- tabPanel("Conclusion",
                                   ")
                                 
                                 
-                                ), 
+                                ) 
 )
 
 # user interface variable that holds all of the pages presented in shiny
@@ -132,7 +132,7 @@ ui <- fluidPage(
     facilities_view,
     income_view,
 #    decades_page,
-    summary_view,
+    summary_view
     #setBackgroundColor("#212121") error says can't find setBackgroundColor
   )
 )
