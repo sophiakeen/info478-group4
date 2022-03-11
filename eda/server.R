@@ -5,7 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 library(shiny)
-#library(rsconnect)
+library(rsconnect)
 
 
 #income data 
