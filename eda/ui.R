@@ -30,8 +30,11 @@ introduction_view <- tabPanel("Home",
                               tags$ul(
                                 tags$li("How does access to mental health care affect suicide rates?"),
                                 tags$li("What is the correlation between socioeconomic status and mental health?"),
+                              ),
+                              br(),
+                              p("By: Christina Tran, Sophia Keen, Youjin Jung, Katherine Poch")
                               )
-                              )
+
                              
                               
 )
@@ -102,10 +105,25 @@ summary_view <- tabPanel("Conclusion",
                                   The first one is the plot on mental hospitals and the second is on outpatient facilities."),
                                 br(),
                                 h4("Mental Hospitals"),
-                                # plotlyOutput("income2012chart"),
+                                plotlyOutput("mentalhospitals"),
                                 h4("Outpatient Facilites"),
-                                # plotlyOutput("income2018chart"),
-                                p("analysis"),
+                                plotlyOutput("outpatientfacilites"),
+                                br(),
+                                p("When comparing the two scatterplots, the outpatient facilities plot shows more varied 
+                                  results compared to the mental hospital chart. As shown in the mental hospital plot, most 
+                                  countries have a very low number of mental hospitals, but despite the low low number of hospitals,
+                                  there are varying numbers of suicide rates. Almost all the countries appear to have 2 or less mental
+                                  hospitals per 100,000 people. The only excpetion to this is Japan that has about 8 mental hospitals 
+                                  per 100,000 people.  In this case, there isn't a correlation between the number of mental hospitals and
+                                  suicide rates because, even though Japan has the highest number of mental hospitals, their suicide rate
+                                  is still on the upper end of the spectrum. Countries like Antigua and Barbuda only have about 1 mental 
+                                  hospital per 100,000, but have the lowest suicide rate of all. The outpaitient facilities show slightly 
+                                  different data however. While a large portion of the plots are still clustered on the lower end of the 
+                                  spectrum (in terms of number of facilities), they are spread out a little more and there are more countries 
+                                  that have five or more facilities. This potentially is due to the amount of resources necessary to setup and 
+                                  run a whole hospital dedicated to mental health care as opposed to just dedicating a department to this type 
+                                  of healthcare at an already established healthcare facility. However, despite the more varied plots, there 
+                                  still doesn't appear to be a correlation between the number of facilities and suicide rate."),
                                 br(),
                                 br(),
                                 br(),
@@ -117,6 +135,7 @@ summary_view <- tabPanel("Conclusion",
                                 plotlyOutput("income2012chart"),
                                 h4("2018"),
                                 plotlyOutput("income2018chart"),
+                                br(),
                                 p("
                                   The 2018 chart overall has greater numbers in weighted frequency than the 2012 chart
                                   for all income categories most likely because of the increase of population in the span of 

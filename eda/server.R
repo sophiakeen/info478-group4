@@ -106,6 +106,34 @@ server <- function(input, output) {
      })
   
   #Conclusion Page
+  #Mental Hospitals
+  output$mentalhospitals <- renderPlotly({
+    suicide_mh <- age_standardized_facilities %>%
+      #select(Country, X2016, Mental._hospitals) %>%
+      group_by(Country) %>%
+      summarise(X2016 = mean(X2016), mental_hospitals = mean(Mental._hospitals))
+    
+      mentalhospitals_plot <- ggplot(data = country_mental_hospital, aes_(x = as.name("mental_hospitals"), y = as.name("X2016"))) +
+        geom_point(size = 1) +
+        labs(y = "Suicidal Rates", x = "Mental Hospitals", title = "Suicidal rates vs. Mental Hospital rates by Country in 2016")
+      
+      ggplotly(mentalhospitals_plot) 
+  })
+  
+  #Outpatient Facilities
+  output$outpatientfacilites <- renderPlotly({
+    suicide_opf <- age_standardized_facilities %>%
+      #select(Country, X2016, outpatient._facilities) %>%
+      group_by(Country) %>%
+      summarise(X2016 = mean(X2016), outpatient_facilites = mean(outpatient._facilities))
+    
+      outpatientfacilities_plot <- ggplot(data = country_mental_hospital, aes_(x = as.name("outpatient_facilities"), y = as.name("X2016"))) +
+        geom_point(size = 1) +
+        labs(y = "Suicidal Rates", x = "Outpatient Facilities", title = "Suicidal rates vs. Outpatient Facilities rates by Country in 2016")
+
+      ggplotly(outpatientfacilities_plot) 
+  })
+  
   #2012
   output$income2012chart <- renderPlotly({
     ad_filter_2012 <- ad_income %>% filter(Year == 2012)
