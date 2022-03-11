@@ -5,7 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 library(shiny)
-#library(rsconnect)
+library(rsconnect)
 adult_depression <- read.csv('data/adult-depression-lghc-indicator-24.csv')
 ad_wider <- adult_depression %>% pivot_wider(names_from = Strata,
                                              values_from = c(Strata.Name, Frequency, Weighted.Frequency,
