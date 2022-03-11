@@ -69,6 +69,11 @@ server <- function(input, output) {
     # 
     # ggplotly(country_mental_hospital_plotly)
     
+    url_data <- a("Mental Health and Suicide Rates dataset acessed through Kaggle", href="https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Age-standardized+suicide+rates.csv")
+    output$tab_url <- renderUI({
+      tagList( url_data)
+    })
+    
     country_facilities_plotly <- ggplot(data = country_mental_hospital, aes_(x = as.name(input$radio), y = as.name("X2016"))) +
       geom_point(size = 1) +
       labs(y = "Suicidal Rates", x = paste(input$radio), title = "Suicidal rates vs. Facilities rates by Country in 2016") +

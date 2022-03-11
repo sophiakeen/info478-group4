@@ -22,10 +22,17 @@ introduction_view <- tabPanel("Home",
                               titlePanel("Introduction"),
                               mainPanel(h3("Purpose"),
                               p(" Mental health is a large global issue that impacts people of all demographics.
-                                With this research project, we're aiming to better understand the correlation between mental health, healthcare, and socioeconomic status.")
-                              ),
+                                With this research project, we're aiming to better understand the correlation between mental health, healthcare, and socioeconomic status.
+                                While we try to inform UW students on the impact of mental health and how it correlates with socioeconomic status, 
+                                to a certain extent, our target audience could be anyone interested in knowing more about mental health and how it might affect their lives."),
                               h3("Research Questions"),
-                              h3("Data Sets"),
+                              p("Our main research questions of the project are the following:"),
+                              tags$ul(
+                                tags$li("How does access to mental health care affect suicide rates?"),
+                                tags$li("What is the correlation between socioeconomic status and mental health?"),
+                              )
+                              )
+                             
                               
 )
 
@@ -33,6 +40,7 @@ introduction_view <- tabPanel("Home",
 facilities_view <- tabPanel("Mental Facilities",
                                titlePanel(""),
                                h1("Pick the types of facilities"),
+                              
                             sidebarPanel(
                               radioButtons(inputId = "radio", 
                                                  label = h3("Pick Type of Facilities"), 
@@ -41,6 +49,16 @@ facilities_view <- tabPanel("Mental Facilities",
                                                  selected = "mental_hospitals")
                             ), 
                             mainPanel(
+                              h3("How does the occurace of Mental Facilities impact the rates of suicides?"),
+                              p("Our first objective is to examine the correlation between mental health - in occurances of suiciudes - and number of mental facilities.
+                              This scatterplot shows what we can see from the Mental Health and Suicide Rates Dataset found here:"),
+                              uiOutput("tab_url"),
+                              br(),
+                              p("In this dataset, suicide rates of age groups in different countries along with health facilities are shown. 
+                                It has information about age-standardized suicide rates, crude suicide rates, amount of mental health facilities
+                                and human mental aide resources per country per 100,000 population. We took the 2016 data from age-standardized suicide rates
+                                and compared them to three different health facilities - mental hospitals, health units, and outpatient facilities."),
+                              br(),
                               plotlyOutput("country_facilities_plotly")
                             )
 )
@@ -80,7 +98,17 @@ summary_view <- tabPanel("Conclusion",
                               titlePanel("Conclusion"),
                               mainPanel( 
                                 h3("Facilities vs. Suicide Rates"),
-                                p(""),
+                                p("Below are two of the Suicidal rates vs. Facilities rates by Country in 2016 charts. 
+                                  The first one is the plot on mental hospitals and the second is on outpatient facilities."),
+                                br(),
+                                h4("Mental Hospitals"),
+                                # plotlyOutput("income2012chart"),
+                                h4("Outpatient Facilites"),
+                                # plotlyOutput("income2018chart"),
+                                p("analysis"),
+                                br(),
+                                br(),
+                                br(),
                                 h3("Income vs. Depression Analysis"),
                                 p("Below are two Income vs. Weighted Depression Frequency bar charts.
                                   The first one is 2012 data and the second one is 2018 data."),
