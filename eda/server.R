@@ -35,15 +35,29 @@ ad_income <- na.omit(ad_income)
 
 #Load Data
 age_standardized_rates <- read.csv('data/archive/Age-standardized suicide rates.csv')
-crude_rates <- read.csv('data/archive/Crude suicide rates.csv')
 facilities <- read.csv('data/archive/Facilities.csv')
-human_resources <- read.csv('data/archive/Human Resources.csv')
 country_continents <- read.csv('data/countryContinent.csv')
+
+age_standardized_facilities <- merge(continents_age_standardized,
+                                     facilities, by = "Country")
+country_continents <- country_continents %>%
+  rename('Country' = country)
+
+#took all years out of age standardized except 2016 bc all the other datasets
+#from kaggle only have data from 2016
+age_standardized_2016 <- age_standardized_rates %>%
+  select(Country:X2016)
+
+#adding continents onto our data
+continents_age_standardized <- merge(age_standardized_2016, country_continents,
+                                     by = "Country")
+continents_age_standardized <- continents_age_standardized %>%
+  select(-code_2, -code_3, -country_code, -iso_3166_2, -sub_region,
+         -sub_region_code, -region_code)
 
 # The relationship between the suicidal rates and mental hospital rates by Country in 2016
 country_mental_hospital <- age_standardized_facilities %>% 
   group_by(Country) %>%
-  # rename('suicide_rates' = 'X2016') %>%
   summarise(X2016 = mean(X2016), mental_hospitals = mean(Mental._hospitals), 
             health_units = mean(health_units), outpatient_facilities = mean(outpatient._facilities))
 
@@ -53,22 +67,6 @@ server <- function(input, output) {
   
   #Mental Hospitals Page
   output$country_facilities_plotly <- renderPlotly({
-    # country_mental_hospital_plotly <- plot_ly(
-    #   data = country_mental_hospital,
-    #   x = input$radio,
-    #   y = ~X2016,
-    #   color = ~Country,
-    #   Type = "scatter",
-    #   Mode = "markers"
-    # ) %>% 
-    #   layout(
-    #     title = "Suicidal rates vs. Facilities rates by Country in 2016",
-    #     yaxis = list(title = "Suicidal Rates"),
-    #     xaxis = list(title = "Facilities Rates")
-    #   )
-    # 
-    # ggplotly(country_mental_hospital_plotly)
-    
     url_data <- a("Mental Health and Suicide Rates dataset acessed through Kaggle", href="https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Age-standardized+suicide+rates.csv")
     output$tab_url <- renderUI({
       tagList( url_data)
@@ -109,7 +107,6 @@ server <- function(input, output) {
   #Mental Hospitals
   output$mentalhospitals <- renderPlotly({
     suicide_mh <- age_standardized_facilities %>%
-      #select(Country, X2016, Mental._hospitals) %>%
       group_by(Country) %>%
       summarise(X2016 = mean(X2016), mental_hospitals = mean(Mental._hospitals))
     
@@ -123,7 +120,6 @@ server <- function(input, output) {
   #Outpatient Facilities
   output$outpatientfacilites <- renderPlotly({
     suicide_opf <- age_standardized_facilities %>%
-      #select(Country, X2016, outpatient._facilities) %>%
       group_by(Country) %>%
       summarise(X2016 = mean(X2016), outpatient_facilites = mean(outpatient._facilities))
     

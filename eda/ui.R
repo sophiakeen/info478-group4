@@ -173,22 +173,12 @@ summary_view <- tabPanel("Conclusion",
 
 # user interface variable that holds all of the pages presented in shiny
 ui <- fluidPage(
-  #includeCSS("finalprojectstyle.css"),
   navbarPage(
-    #inverse = TRUE,
-  #tags$div(
-      #img(
-       # src = "https://media.giphy.com/media/5BUR9eNQdG5egwA0pO/giphy.gif",
-       # width = "216px", height = "48px"
-      #),
       "Exploring Mental Health Correlations"
-    #)
   ,
     introduction_view,
     facilities_view,
     income_view,
-#    decades_page,
     summary_view
-    #setBackgroundColor("#212121") error says can't find setBackgroundColor
   )
 )
